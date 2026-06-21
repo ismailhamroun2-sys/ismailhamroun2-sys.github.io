@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إسماعيل نيوز | المنصة العالمية</title>
+    <style>
+        body { background-color: #0d1117; color: #c9d1d9; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
+        header { background-color: #161b22; padding: 20px; text-align: center; border-bottom: 2px solid #238636; }
+        header h1 { color: #ffffff; margin: 0; font-size: 2.2rem; }
+        header h1 span { color: #238636; }
+        nav { background-color: #1f242c; padding: 10px; text-align: center; border-bottom: 1px solid #30363d; }
+        nav a { color: #58a6ff; text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 1.1rem; }
+        nav a:hover { color: #2ea043; text-decoration: underline; }
+        .ticker-wrap { background: #238636; color: white; overflow: hidden; white-space: nowrap; padding: 10px 0; font-weight: bold; }
+        .ticker { display: inline-block; animation: marquee 20s linear infinite; }
+        @keyframes marquee { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+        .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+        .main-title { color: #ffffff; border-bottom: 2px solid #30363d; padding-bottom: 10px; }
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+        .news-card { background-color: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 20px; transition: 0.3s; }
+        .news-card:hover { transform: translateY(-5px); border-color: #58a6ff; }
+        .news-card .tag { background: #1f242c; color: #58a6ff; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; }
+        .news-card h2 { color: white; font-size: 1.4rem; margin: 15px 0 10px 0; }
+        .news-card p { color: #8b949e; line-height: 1.6; font-size: 0.95rem; }
+        .btn-link { display: inline-block; margin-top: 15px; color: #58a6ff; text-decoration: none; font-weight: bold; }
+        .btn-link:hover { text-decoration: underline; }
+        footer { text-align: center; padding: 20px; background-color: #161b22; color: #8b949e; margin-top: 5px; border-top: 1px solid #30363d; }
+    </style>
+</head>
+<body>
+    <header><h1>🌐 إسماعيل <span>نيوز</span></h1></header>
+    <nav>
+        <a href="index.html">🏠 الرئيسية</a>
+        <a href="sec-news.html">🛡️ أمن سيبراني</a>
+        <a href="contact.html">✍️ راسلنا / شارك خبر</a>
+    </nav>
+    <div class="ticker-wrap"><div class="ticker">🔥 عاجل: منصة إسماعيل نيوز تطلق تحديثها الضخم وتفتح أقساماً جديدة خاصة بالهاكرز الأخلاقي ومطوري الويب.. تابعونا!</div></div>
+    <div class="container">
+        <h2 class="main-title">📰 آخر الأخبار المتداولة</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <span class="tag">تكنولوجيا</span>
+                <h2>تطور هائل في بيئات عمل الأندرويد</h2>
+                <p>الشباب المغاربة والعالميون يثبتون كفاءتهم في تشغيل وإدارة مشاريع برمجية عملاقة انطلاقاً من بيئة Termux وبدون الحاجة لحواسيب غالية الثمن.</p>
+                <a href="sec-news.html" class="btn-link">اقرأ المزيد ←</a>
+            </div>
+            <div class="news-card">
+                <span class="tag">حماية</span>
+                <h2>كيف تحمي موقعك من الاختراق النهائي؟</h2>
+                <p>مواقع الويب الثابتة (Static Sites) المرفوعة على GitHub Pages تثبت أنها الأكثر أماناً في العالم ضد هجمات DDoS واختراقات قواعد البيانات.</p>
+                <a href="sec-news.html" class="btn-link">اقرأ التفاصيل ←</a>
+            </div>
+        </div>
+    </div>
+    <footer>جميع الحقوق محفوظة © 2026 | شبكة إسماعيل نيوز الآمنة</footer>
+</body>
+</html>
+
