@@ -3,47 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ismail Hamroun | المنصة الإخبارية المغربية الشاملة</title>
+    <title>Ismail Hamroun | المنصة الإخبارية المغربية المتكاملة</title>
     <style>
         :root {
             --bg-color: #020617;
             --card-bg: #0f172a;
-            --accent-color: #e11d48; /* لون أحمر رياضي ونابض */
+            --accent-color: #e11d48; /* أحمر ناري رياضي */
             --text-color: #f8fafc;
             --text-muted: #94a3b8;
+            --news-yellow: #f59e0b;
+            --news-green: #10b981;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.8; }
-        header { background-color: #000000; padding: 25px; border-bottom: 4px solid var(--accent-color); position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(225, 29, 72, 0.2); }
+        
+        /* الهيدر والقائمة */
+        header { background-color: #000000; padding: 20px; border-bottom: 4px solid var(--accent-color); position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(225, 29, 72, 0.3); }
         .header-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .logo { font-size: 34px; font-weight: 900; letter-spacing: 2px; color: var(--text-color); text-transform: uppercase; }
+        .logo { font-size: 30px; font-weight: 900; letter-spacing: 1px; color: var(--text-color); }
         .logo span { color: var(--accent-color); }
-        nav { display: flex; gap: 20px; flex-wrap: wrap; }
-        nav a { color: var(--text-color); text-decoration: none; font-weight: 700; padding: 10px 20px; border-radius: 8px; transition: 0.3s; font-size: 16px; background: rgba(255,255,255,0.05); }
+        nav { display: flex; gap: 15px; flex-wrap: wrap; }
+        nav a { color: var(--text-color); text-decoration: none; font-weight: 700; padding: 8px 16px; border-radius: 8px; transition: 0.3s; font-size: 15px; background: rgba(255,255,255,0.05); }
         nav a:hover, nav a.active { background-color: var(--accent-color); color: white; transform: translateY(-2px); }
         
-        .hero-article { max-width: 1200px; margin: 40px auto; background: linear-gradient(to top, rgba(15, 23, 42, 1), rgba(15, 23, 42, 0.5)), url('https://images.unsplash.com/photo-1518605368461-1ee7e55cecc5?w=1200') center/cover; border-radius: 20px; padding: 60px 40px; display: flex; flex-direction: column; justify-content: flex-end; min-height: 500px; border: 1px solid rgba(225, 29, 72, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .hero-tag { background-color: var(--accent-color); color: white; padding: 8px 16px; border-radius: 6px; font-weight: bold; width: fit-content; margin-bottom: 20px; font-size: 14px; letter-spacing: 1px; }
-        .hero-title { font-size: 42px; font-weight: 900; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); line-height: 1.3; color: white; }
-        .hero-text { font-size: 18px; color: #cbd5e1; max-width: 800px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
-
-        .main-container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-        .section-title { font-size: 32px; border-right: 6px solid var(--accent-color); padding-right: 20px; margin-bottom: 40px; color: var(--text-color); font-weight: 900; }
+        /* شريط الأخبار المتحرك */
+        .ticker-wrap { background-color: var(--accent-color); color: white; padding: 12px; overflow: hidden; white-space: nowrap; font-weight: bold; font-size: 14px; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
+        .ticker { display: inline-block; animation: marquee 25s linear infinite; padding-right: 100%; }
+        @keyframes marquee { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
         
-        .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 35px; margin-bottom: 60px; }
-        .article-card { background-color: var(--card-bg); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.2); transition: all 0.4s ease; border: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; }
-        .article-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(225, 29, 72, 0.2); border-color: rgba(225, 29, 72, 0.4); }
-        .article-image { width: 100%; height: 250px; object-fit: cover; }
-        .article-content { padding: 30px; flex-grow: 1; }
-        .article-tag { display: inline-block; background-color: rgba(255, 255, 255, 0.1); color: #60a5fa; padding: 6px 12px; border-radius: 6px; font-size: 13px; font-weight: 800; margin-bottom: 15px; }
-        .article-title { font-size: 22px; margin-bottom: 15px; color: var(--text-color); font-weight: 800; line-height: 1.4; }
-        .article-desc { color: var(--text-muted); font-size: 16px; margin-bottom: 25px; text-align: justify; }
-        .article-author { display: flex; align-items: center; gap: 15px; margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
-        .author-avatar { width: 40px; height: 40px; background-color: var(--accent-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px; }
-        .author-info h5 { color: var(--text-color); font-size: 15px; }
-        .author-info span { color: var(--text-muted); font-size: 13px; }
+        /* لوحة الإحصائيات الفخمة */
+        .stats-panel { max-width: 1200px; margin: 30px auto 0 auto; background: linear-gradient(135deg, #0f172a, #1e293b); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 25px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .stat-item h4 { font-size: 32px; color: var(--accent-color); font-weight: 900; }
+        .stat-item p { color: var(--text-muted); font-size: 14px; margin-top: 5px; font-weight: 600; }
 
-        footer { background-color: #000000; text-align: center; padding: 40px; border-top: 2px solid var(--card-bg); color: var(--text-muted); font-size: 16px; font-weight: 600; }
+        /* الخبر الرئيسي الكبير */
+        .hero-article { max-width: 1200px; margin: 40px auto; background: linear-gradient(to top, rgba(2, 6, 23, 1), rgba(2, 6, 23, 0.4)), url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1200') center/cover; border-radius: 24px; padding: 80px 40px 40px 40px; display: flex; flex-direction: column; justify-content: flex-end; min-height: 550px; border: 1px solid rgba(225, 29, 72, 0.2); box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
+        .hero-tag { background-color: var(--accent-color); color: white; padding: 6px 14px; border-radius: 6px; font-weight: 800; width: fit-content; margin-bottom: 20px; font-size: 13px; text-transform: uppercase; }
+        .hero-title { font-size: 38px; font-weight: 900; margin-bottom: 20px; text-shadow: 2px 2px 8px rgba(0,0,0,0.9); line-height: 1.4; color: #ffffff; }
+        .hero-text { font-size: 17px; color: #cbd5e1; max-width: 900px; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); text-align: justify; }
+
+        /* شبكة المقالات الأخرى */
+        .main-container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .section-title { font-size: 28px; border-right: 6px solid var(--accent-color); padding-right: 15px; margin-bottom: 35px; color: var(--text-color); font-weight: 900; }
+        
+        .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        .article-card { background-color: var(--card-bg); border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.3); transition: all 0.4s ease; border: 1px solid rgba(255,255,255,0.03); display: flex; flex-direction: column; }
+        .article-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(225, 29, 72, 0.15); border-color: rgba(225, 29, 72, 0.3); }
+        .article-image { width: 100%; height: 230px; object-fit: cover; filter: brightness(0.9); }
+        .article-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .article-tag { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 800; margin-bottom: 15px; width: fit-content; }
+        
+        /* ألوان التاغات */
+        .tag-danger { background-color: rgba(239, 68, 68, 0.15); color: #f87171; }
+        .tag-warning { background-color: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+        .tag-purple { background-color: rgba(167, 139, 250, 0.15); color: #c084fc; }
+        .tag-success { background-color: rgba(16, 185, 129, 0.15); color: #34d399; }
+
+        .article-title { font-size: 20px; margin-bottom: 12px; color: var(--text-color); font-weight: 800; line-height: 1.5; }
+        .article-desc { color: var(--text-muted); font-size: 15px; margin-bottom: 20px; text-align: justify; flex-grow: 1; }
+        
+        /* كاتب المقال */
+        .article-author { display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px; margin-top: auto; }
+        .author-avatar { width: 38px; height: 38px; background-color: var(--accent-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; color: white; }
+        .author-info h5 { color: var(--text-color); font-size: 14px; font-weight: 700; }
+        .author-info span { color: var(--text-muted); font-size: 12px; }
+
+        /* الفوتر */
+        footer { background-color: #000000; text-align: center; padding: 35px; border-top: 2px solid #0f172a; color: var(--text-muted); font-size: 15px; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -52,66 +78,119 @@
         <div class="header-container">
             <div class="logo">ISMAIL <span>HAMROUN</span></div>
             <nav>
-                <a href="index.html" class="active">🔥 عاجل وحصري</a>
-                <a href="#articles">📰 مقالات وتقارير</a>
+                <a href="index.html" class="active">🔴 البث المباشر</a>
+                <a href="#articles">📰 المستجدات ({6})</a>
             </nav>
         </div>
     </header>
 
+    <div class="ticker-wrap">
+        <div class="ticker">
+            💥 عاجل: توقيف الهاكر الشهير "يوسف الحولي" ف مجتمع الـ eFootball بتهم ثقيلة .. 🚨 تسريبات: ضجة عارمة ف الساحة الفنية بعد تداول فيديو منسوب للمغني أمين طيار .. ⚽ كأس العالم: طوارئ ف معسكر أسود الأطلس لمواجهة الديكة الفرنسية التاريخية .. 🇲🇦 بيس موبايل: اللعبة تسجل أعلى نسبة تحميل واستخدام ف تاريخ المملكة المغربية هاد الموسم ..
+        </div>
+    </div>
+
+    <div class="stats-panel">
+        <div class="stat-item">
+            <h4>+250K</h4>
+            <p>قراء منصة همرون</p>
+        </div>
+        <div class="stat-item">
+            <h4>حسري</h4>
+            <p>تغطية رقمية وأمنية</p>
+        </div>
+        <div class="stat-item">
+            <h4>2026</h4>
+            <p>تحديثات مستمرة لايف</p>
+        </div>
+    </div>
+
     <div class="hero-article">
-        <div class="hero-tag">🚨 حصري - كأس العالم</div>
-        <h1 class="hero-title">المنتخب المغربي يرفع إيقاع الاستعدادات: مواجهة نارية مرتقبة ضد الديكة الفرنسية تزلزل الشارع الرياضي</h1>
-        <p class="hero-text">في تغطية حصرية لمنصة إسماعيل همرون، كشفت مصادر مقربة من الجامعة الملكية المغربية لكرة القدم عن تفاصيل الاستعدادات المكثفة لأسود الأطلس تحضيراً لنهائيات كأس العالم. وتتجه الأنظار نحو المواجهة الحاسمة والثأرية التي ستجمع المنتخب الوطني بنظيره الفرنسي، حيث يعكف الطاقم التقني على دراسة نقاط ضعف الخصم ووضع خطط تكتيكية جديدة تعتمد على السرعة والضغط العالي. الجماهير المغربية تنتظر بشغف ملحمة كروية جديدة تعيد كتابة التاريخ.</p>
+        <div class="hero-tag">🚨 مواجهة القرن - مونديال 2026</div>
+        <h1 class="hero-title">المنتخب المغربي يرفع إيقاع الاستعدادات القصوى: ملحمة نارية مرتقبة ضد فرنسا تزلزل الشارع الرياضي</h1>
+        <p class="hero-text">في تغطية حصرية وخاصة بمنصة إسماعيل همرون، أكدت مصادر من داخل النخبة الوطنية أن أسود الأطلس يدخلون معسكراً مغلقاً بإيقاع تكتيكي صارم وبمعنويات مرتفعة جداً. المواجهة القادمة ضد المنتخب الفرنسي لا تعتبر مجرد مباراة عادية، بل هي قمة ثأرية وتاريخية ينتظرها الشارع المغربي بفارغ الصبر. الطاقم التقني يركز على الكرات المرتدة السريعة واللياقة البدنية العالية لمحاصرة الديكة وانتزاع فوز تاريخي جديد يضاف لأمجاد الكرة المغربية.</p>
     </div>
 
     <div class="main-container" id="articles">
-        <h2 class="section-title">مقالات وتحليلات حصرية بالموقع</h2>
+        <h2 class="section-title">أحدث التقارير الساخنة والمتداولة</h2>
         
         <div class="articles-grid">
             
             <div class="article-card">
-                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600" alt="صناعة المحتوى الجيمينغ" class="article-image">
+                <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=600" alt="اعتقال قرصنة" class="article-image">
                 <div class="article-content">
-                    <span class="article-tag" style="color: #a78bfa;">🎮 جيمينغ ويوتيوب</span>
-                    <h3 class="article-title">تحديثات eFootball تثير حماس صناع المحتوى المغاربة على يوتيوب</h3>
-                    <p class="article-desc">يشهد مجال صناعة المحتوى في المغرب طفرة نوعية، خاصة بين عشاق الألعاب الإلكترونية. ومع اقتراب التحديثات الضخمة للعبة eFootball، يتسابق اليوتيوبرز المغاربة لتقديم أفضل "الجيم بلاي" والشروحات التكتيكية، مما يرفع من حدة المنافسة على تحقيق أعلى المشاهدات وبناء قاعدة جماهيرية صلبة في مجتمع الجيمرز.</p>
+                    <span class="article-tag tag-danger">🚨 أمن رقمي وقضاء</span>
+                    <h3 class="article-title">زلزال ف مجتمع الجيمينغ: اعتقال الهاكر "يوسف الحولي" بتهمة القرصنة غير الأخلاقية داخل بيس</h3>
+                    <p class="article-desc">اهتزت مجموعات منصات التواصل ومجتمع اللاعبين المغاربة على وقع خبر توقيف واعتقال الهاكر المعروف "يوسف الحولي". وجاء هذا الاعتقال بعد تحقيقات دقيقة ف تهم تتعلق بالهكر غير الأخلاقي، واختراق السيرفرات، وسرقة حسابات شحن الكوينز وبيانات اللاعبين داخل لعبة eFootball، مما تسبب ف خسائر مالية ومعنوية كبيرة للمستخدمين.</p>
                     <div class="article-author">
                         <div class="author-avatar">IH</div>
                         <div class="author-info">
                             <h5>بقلم: إسماعيل همرون</h5>
-                            <span>مقال تحليلي - قسم التكنولوجيا</span>
+                            <span>تغطية أمنية خاصة</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="article-card">
-                <img src="https://images.unsplash.com/photo-1523398002811-999aa8d9512e?w=600" alt="ستريتوير في المغرب" class="article-image">
+                <img src="https://images.unsplash.com/photo-1614680376593-902f74fa0d41?w=600" alt="فضيحة تسريب" class="article-image">
                 <div class="article-content">
-                    <span class="article-tag" style="color: #fbbf24;">🧥 لايف ستايل وموضة</span>
-                    <h3 class="article-title">عودة قوية لقمصان الأندية الكلاسيكية وستايل "الستريتوير" بشوارع مراكش</h3>
-                    <p class="article-desc">تعرف شوارع مدينة مراكش والمدن المغربية الكبرى توجهاً كبيراً نحو أزياء الستريتوير (Streetwear). الشباب أصبحوا يميلون أكثر للملابس الفضفاضة (Baggy Jeans) ودمجها مع قمصان الأندية الرياضية الكلاسيكية، خاصة تيشيرتات الأندية الإيطالية العريقة، مما يخلق هوية بصرية جديدة تمزج بين الرياضة والأناقة المتمردة.</p>
+                    <span class="article-tag tag-warning">🌐 تسريبات ومشاهير</span>
+                    <h3 class="article-title">الانتشار القياسي لـ "بيس موبايل" بالمغرب يتزامن مع ضجة فيديو المغني أمين طيار</h3>
+                    <p class="article-desc">ف الوقت للي كاتسجل فيه لعبة بيس موبايل (eFootball) انتشاراً مرعباً وغير مسبوق بين الشباب ف المقاهي والشوارع المغربية، اندلعت ضجة عارمة على السوشيل ميديا إثر تسريب فيديو مخل بالحياء ينسب للمغني المشهور "أمين طيار". هاد التزامن أثار موجة من النقاشات والجدل الحاد وسط صناع المحتوى والجمهور المغربي.</p>
                     <div class="article-author">
                         <div class="author-avatar">IH</div>
                         <div class="author-info">
                             <h5>بقلم: إسماعيل همرون</h5>
-                            <span>مقال حصري - قسم الشباب</span>
+                            <span>قسم الفن والمجتمع</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="article-card">
-                <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=600" alt="الملاكمة المغربية" class="article-image">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600" alt="يوتيوب جيمينغ" class="article-image">
                 <div class="article-content">
-                    <span class="article-tag" style="color: #34d399;">🥊 الفن النبيل</span>
-                    <h3 class="article-title">أبطال الملاكمة المغاربة يواصلون التألق والاستعداد للمحافل الدولية</h3>
-                    <p class="article-desc">تستمر رياضة الملاكمة في استقطاب الشباب المغربي الطموح، حيث تشهد الأندية وتيرة تدريبات قاسية استعداداً للبطولات القادمة. التركيز ينصب حالياً على تطوير تقنيات التفادي (Sparring) وتقوية اللياقة البدنية، في أفق رفع الراية المغربية في الحلبات العالمية وإثبات علو كعب القفاز المغربي.</p>
+                    <span class="article-tag tag-purple">🎮 صناعة المحتوى</span>
+                    <h3 class="article-title">تحديثات eFootball الساخنة تلهب حماس اليوتيوبرز وصناع الفيديو بالمملكة</h3>
+                    <p class="article-desc">تواصلاً مع الانتشار الرهيب للعبة، يتنافس يوتيوبرز الألعاب ف المغرب على تقديم شروحات الباكات وتفتيح الباكيجات وتكتيكات اللعب الاحترافي. التحديثات الأخيرة من شركة كونامي جعلت المنافسة تشتعل على اليوتيوب لتقديم أفضل محتوى ترفيهي وتقني للمتابعين المغاربة المهووسين باللعبة.</p>
                     <div class="article-author">
                         <div class="author-avatar">IH</div>
                         <div class="author-info">
                             <h5>بقلم: إسماعيل همرون</h5>
-                            <span>تغطية رياضية - قسم الرياضة</span>
+                            <span>قسم الجيمينغ والتكنولوجيا</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <img src="https://images.unsplash.com/photo-1523398002811-999aa8d9512e?w=600" alt="ستريتوير مراكش" class="article-image">
+                <div class="article-content">
+                    <span class="article-tag tag-warning">🧥 موضة وثقافة شبابية</span>
+                    <h3 class="article-title">ثقافة الـ Streetwear والملابس الفضفاضة تغزو شوارع مراكش والمدن الكبرى</h3>
+                    <p class="article-desc">شهدت الموضة الشبابية ف المغرب تحولاً جذرياً نحو ستايل الستريتوير؛ حيث أصبح الاعتماد كبيراً على السراويل الواسعة (Baggy Jeans) وتنسيقها مع قمصان كرة القدم الكلاسيكية العتيقة (Vintage Jerseys). هاد الستايل يعبر عن تمازج فريد بين ثقافة الهيب هوب والرياضة ف هوية بصرية متميزة.</p>
+                    <div class="article-author">
+                        <div class="author-avatar">IH</div>
+                        <div class="author-info">
+                            <h5>بقلم: إسماعيل همرون</h5>
+                            <span>مقال ستايل ولايف ستايل</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=600" alt="ملاكمة تداريب" class="article-image">
+                <div class="article-content">
+                    <span class="article-tag tag-success">🥊 رياضة الفن النبيل</span>
+                    <h3 class="article-title">أندية الملاكمة المغربية ترفع وتيرة النزالات الاستعراضية وتجهيز الأبطال</h3>
+                    <p class="article-desc">تستمر حلبات الملاكمة بالمغرب ف تفريخ طاقات واعدة؛ حيث تشهد قاعات التدريب وتيرة قاسية من حصص الـ Sparring وتطوير مهارات الدفاع واللكم السريع. الأبطال الشباب يضعون نصب أعينهم المشاركة ف المحافل الوطنية والدولية لتمثيل القفاز المغربي أحسن تمثيل.</p>
+                    <div class="article-author">
+                        <div class="author-avatar">IH</div>
+                        <div class="author-info">
+                            <h5>بقلم: إسماعيل همرون</h5>
+                            <span>التغطية الرياضية الحية</span>
                         </div>
                     </div>
                 </div>
@@ -121,7 +200,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Ismail Hamroun. المنصة الإخبارية الأولى بالمغرب - جميع الحقوق محفوظة.</p>
+        <p>&copy; 2026 Ismail Hamroun. المنصة الإخبارية المتكاملة بالمغرب - جميع الحقوق محفوظة لـ منصة إسماعيل همرون الإخبارية.</p>
     </footer>
 
 </body>
